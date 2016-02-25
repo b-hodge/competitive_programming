@@ -1,3 +1,7 @@
+# Brian Hodge (bph443)
+# CS 109 PS5 - Algebra
+import fileinput
+
 def nary_polynomial_eval(x, n, coefficients):
 	sum_eval = 0
 	for i in reversed(range(0, n+1)):
@@ -36,10 +40,15 @@ def find_x(y, n, coefficients):
 			i = i+1
 
 
-
 # Execution starts here
-print(find_x(28, 2, [1, 0, 3]))
-print(find_x(5, 5, [1, 1, 1, 1, 1, 0]))
-print(find_x(0, 1, [1, 3]))
-print(find_x(1881676371789154860897070, 3, [1, 0, 0, 1]))
-
+num_test_cases = int(input())
+count = 0
+for line in fileinput.input():
+	count = count+1
+	if count % 2:
+		params = [int(n) for n in line.split()]
+	else:
+		coefficients = [int(n) for n in line.split()]
+		print(find_x(params[1], params[0], coefficients))
+	
+	
